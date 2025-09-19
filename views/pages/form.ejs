@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <%- include('../partials/head') %>
+    <style>
+        label {
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body class="container">
+ 
+    <header>
+
+        <%- include('../partials/header') %>
+
+    </header>
+
+ 
+
+    <main>
+
+
+        <div>
+            <form action="/form" method="POST" autocomplete="on">
+                Quel Type de bouton ?
+                <br/>
+                <input type="radio" name="pizzastyle" disabled = "enabled" value="H">Hawaïenne<br>
+                <input type="radio" name="pizzastyle" value="A" CHECKED >All Dressed<br>
+                <input type="radio" name="pizzastyle" value="S">Sicilienne<br><br>
+                QUELLE QUANTITÉ ?
+                <br/>
+                <input type="number" required = "required" name="quantite" min="1" max="99" value="1"><br/><br/>
+                QUELLE TAILLE ?
+                <br/>
+                <select name="taille">
+                    <option value="S">Small</option>
+                    <option value="M" selected="selected">Medium</option>
+                    <option value="L">Large</option>
+                </select><br/><br/>
+                QUELS INGREDIENTS SUPPLÉMENTAIRES ?<br/>
+                <input type="checkbox" name="pepperoni" value="pepperoniOK" />
+                pepperoni<br/>
+                <input type="checkbox" name="mozzarella" value="mozzarellaOK" />
+                mozzarella<br/> 
+                <input type="checkbox" name="oeuf" value="oeufOK" />
+                oeuf<br/><br/> 
+
+                QUELLE EST VOTRE ADRESSE ?
+                <br>
+                <textarea name="adresse" rows="2" cols="50">
+                </textarea><br/><br/>
+
+                QUELLE EST VOTRE CODE POSTAL ? exemple : H2X 1Y4
+                <br>
+                <input type="text" required = "required" name="codepostal" value="H2X 1Y4" pattern="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]"><br/><br/>
+
+                <label for="fname">QUELLE EST VOTRE NOM ?</label><br>
+                <input type="text" id="fname" required = "required" name="fname"><br>
+                <label for="lname">QUELLE EST VOTRE PRÉNOM ?</label><br>
+                <input type="text" id="lname" required = "required" name="lname"><br><br>
+
+                QUELLE EST VOTRE TÉLÉPHONE? exemple : 514-123-4567
+                <br/>
+                <input type="tel" name="telephone" required = "required"  placeholder="438-234-5678" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" ><br/><br/>
+
+                QUELLE EST VOTRE EMAIL ?
+                <br/>
+                <input type="email" required = "required" name="email" value=""><br/><br/>
+
+                QUELLE EST VOTRE MODE DE PAIEMENT ?
+                <br/>
+                <input type="text" name="modepaiement" required = "required" value=""><br/><br/>
+
+                <input type="submit" value="Confirmer ma commande" />
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+
+        <%- include('../partials/footer') %>
+
+    </footer>
+
+</body>
+
+</html>

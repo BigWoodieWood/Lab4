@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+  @file accueil.ejs
+  @author Elliot Wood
+  @version 1.0
+  @date 2025-09-02
+  @brief Page d'accueil alternative utilisant EJS.
+-->
+
+<html>
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body class="container">
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>Accueil</h1>
+            <p>Bienvenue sur la page d'accueil utilisant EJS</p>
+            <a class="btn btn-primary btn-lg" href="/form" role="button">Aller au formulaire</a>
+            <a class="btn btn-primary btn-lg" href="/contact" role="button">Aller au contacts</a>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>

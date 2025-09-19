@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+  @file resultat.ejs
+  @author Elliot Wood
+  @version 1.0
+  @date 2025-09-02
+  @brief Page de résultat utilisant EJS.
+-->
+
+
+<html>
+
+<head>
+
+    <%- include('../partials/head') %>
+
+</head>
+
+<body class="container">
+ 
+    <header>
+
+        <%- include('../partials/header') %>
+
+    </header>
+
+ 
+
+    <main>
+        <table class="table table-hover table-bordered table-striped">
+        <thead class="table-dark"> 
+            <tr>
+                <th>Item</th>
+                <th>Valeur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Prénom</td><td><%= data.fname %> </td></tr>
+            <tr><td>Nom</td><td><%= data.lname %> </td></tr>
+            <tr><td>Téléphone</td><td><%= data.telephone %></td></tr>
+            <tr><td>Adresse</td><td><%= data.adresse %></td></tr>
+            <tr><td>Mode de paiement</td><td><%= data.modepaiement %></td></tr>
+            <script>
+                let price = 0.00;
+                var tax = 0.00;
+                var final = 0.00;
+                let quantite = 0;
+                let taille = 1.00;
+                let pizzastyle = "";
+                let supplement = 0;
+                const data = <%- JSON.stringify(data) %>;
+                Object.entries(data).forEach(([key, value]) => {
+                    console.log(key, "=", value);
+                    switch (key) {
+                        case "quantite":
+                            quantite = parseInt(value);
+                            break;
+                        case "taille":
+                            switch(value) {
+                                case "P":
+                                    taille = 0.80;
+                                    break;
+                                case "M":
+                                    taille = 1.00;
+                                    break;
+                                case "G":
+                                    taille = 1.20;
+                                    break;
+                            }
+                            break;
+                        case "pizzastyle":
+                            switch(value) {
+                                case "H":
+                                    pizzastyle = 7.00;
+                                    break;
+                                case "A":
+                                    pizzastyle = 8.10;
+                                    break;
+                                case "S":
+                                    pizzastyle = 6.30;
+                                    break;
+                            }
+                            break;
+                        case "pepperoni":
+                        case "mozzarella":
+                        case "oeuf":
+                            supplement ++;
+                            break;
+                    }
+                });
+                console.log("quantite =", quantite);
+                console.log("pizzastyle =", pizzastyle);
+                console.log("supplement =", supplement);
+                console.log("taille =", taille);
+                price = (quantite * ((pizzastyle + supplement*0.50)* taille)).toFixed(2);
+                tax = ((price*1.15) - price).toFixed(2);
+                
+                document.write("<tr><td>Sous-total</td><td>$" + price.toString() + "$</td></tr>");
+                document.write("<tr><td>Total</td><td>$" + tax.toString() + "$</td></tr>");
+                document.write("<tr><td>Total</td><td>$" + (price*1.15).toString() + "$</td></tr>");
+            </script>
+        </tbody>
+    </table>
+    </main>
+
+    <footer>
+
+        <%- include('../partials/footer') %>
+
+    </footer>
+
+</body>
