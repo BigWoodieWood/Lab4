@@ -1,10 +1,9 @@
 /** 
   * @file       index.js 
-  * @author     Nicolas Géraudie (nicolas.geraudie@clg.qc.ca) 
+  * @author     Elliot Wood
   * @version    1 
-  * @date       18/09/2025 
-  * @brief      Première ébauche d'une architecture générique "RESTful" avec Express 
-  *             Routeur principal 
+  * @date       22/09/2025 
+  * @brief      Routeur principal pour la page d'accueil
   */ 
 var express = require('express'); 
 var router = express.Router(); 
