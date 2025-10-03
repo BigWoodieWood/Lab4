@@ -8,43 +8,49 @@
 -->
 
 <html>
+
 <head>
     <%- include('../partials/head') %>
 </head>
+
 <body class="container">
     <header>
         <%- include('../partials/header') %>
     </header>
 
     <main>
-        <h1>Historique des transactions</h1>
+        <h1 class="text-danger text-center">Historique des transactions</h1>
 
-    <form method="get" action="/historique">
-        <label for="phone">Numéro de téléphone :</label>
-        <input type="text" id="phone" name="phone" value="<%= phone %>">
-        <button type="submit">Rechercher</button>
-    </form>
+        <form method="get" action="/historique" class="text-center">
+            <label for="phone">Numéro de téléphone :</label>
+            <input type="text" id="phone" name="phone" value="<%= phone %>">
+            <button type="submit" class="btn btn-danger">Rechercher</button>
+        </form>
 
-    <% if (history.length > 0) { %>
-    <h2>Transactions pour <%= phone %></h2>
-    <ul>
-        <% history.forEach(transaction => { %>
-            <li>
-                Pizza: <%= transaction.pizzastyle %>, 
-                Quantité: <%= transaction.quantite %>, 
-                Taille: <%= transaction.taille %>, 
-                Adresse: <%= transaction.adresse %>, 
-                Mode de paiement: <%= transaction.modepaiement %>
-            </li>
-        <% }); %>
-    </ul>
-<% } else { %>
-    <p>Aucune transaction trouvée pour ce numéro.</p>
-<% } %>
+        <% if (history.length> 0) { %>
+            <div class="text-center">
+                <h2>Transactions pour <%= phone %>
+                </h2>
+                <ul class="list-unstyled">
+                    <% history.forEach(transaction=> { %>
+                        <li>
+                            Pizza: <%= transaction.pizzastyle %>,
+                                Quantité: <%= transaction.quantite %>,
+                                    Taille: <%= transaction.taille %>,
+                                        Adresse: <%= transaction.adresse %>,
+                                            Mode de paiement: <%= transaction.modepaiement %>
+                        </li>
+                        <% }); %>
+                </ul>
+            </div>
+            <% } else { %>
+                <p>Aucune transaction trouvée pour ce numéro.</p>
+                <% } %>
     </main>
 
     <footer>
         <%- include('../partials/footer') %>
     </footer>
 </body>
+
 </html>

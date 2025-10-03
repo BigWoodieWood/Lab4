@@ -8,21 +8,29 @@
 -->
 
 <html>
+
 <head>
     <%- include('../partials/head') %>
 </head>
+
 <body class="container">
     <header>
         <%- include('../partials/header') %>
     </header>
 
+    <h1 class="text-center">Accueil</h1>
+
+    <div class="text-center mt-3 mb-5">
+        <img src="https://media.istockphoto.com/id/2156049905/photo/four-different-types-of-pizza-arranged-in-the-form-of-pizza.jpg?s=612x612&w=0&k=20&c=styI_N1wvgSWuHtPVpKTlMgP-lkEC5akwIo9IRnLOMo="
+            alt="Pizza" class="rounded-circle img-fluid" style="max-width: 500px; height: auto;">
+    </div>
+
     <main>
-        <div class="jumbotron">
-            <h1>Accueil</h1>
+        <div class="jumbotron text-center">
             <p>Bienvenue sur la page d'accueil utilisant EJS</p>
-            <a class="btn btn-primary btn-lg" href="/form" role="button">Aller au formulaire</a>
-            <a class="btn btn-primary btn-lg" href="/contact" role="button">Aller au contacts</a>
-            <a class="btn btn-primary btn-lg" href="/historique" role="button">Aller à l'historique</a>
+            <a class="btn btn-danger btn-lg" href="/form" role="button">Aller au formulaire</a>
+            <a class="btn btn-danger btn-lg" href="/contact" role="button">Aller au contacts</a>
+            <a class="btn btn-danger btn-lg" href="/historique" role="button">Aller à l'historique</a>
         </div>
     </main>
 
@@ -30,4 +38,5 @@
         <%- include('../partials/footer') %>
     </footer>
 </body>
+
 </html>

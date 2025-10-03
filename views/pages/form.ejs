@@ -2,99 +2,148 @@
 <!--
   @file error.ejs
   @author Elliot Wood
-  @version 1.0
-  @date 2025-09-02
-  @brief Page du formulaire de commande.
+  @version 1.1
+  @date 2025-10-02
+  @brief Page du formulaire de commande avec Bootstrap.
 -->
 
 <html>
 
 <head>
-
     <%- include('../partials/head') %>
-    <style>
-        label {
-            font-weight: normal;
-        }
-    </style>
+        <style>
+            label {
+                font-weight: normal;
+            }
+        </style>
 </head>
 
 <body class="container">
- 
+
     <header>
-
         <%- include('../partials/header') %>
-
     </header>
 
- 
+    <main class="my-4">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white">
+                <h3 class="mb-0">Formulaire de commande</h3>
+            </div>
+            <div class="card-body">
+                <form action="/form" method="POST" autocomplete="on">
 
-    <main>
+                    <!-- Type de pizza -->
+                    <div class="mb-3">
+                        <label class="form-label">Quel type de pizza ?</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pizzastyle" disabled value="H"
+                                id="hawai">
+                            <label class="form-check-label" for="hawai">Hawaïenne</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pizzastyle" value="A" id="all" checked>
+                            <label class="form-check-label" for="all">All Dressed</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pizzastyle" value="S" id="sici">
+                            <label class="form-check-label" for="sici">Sicilienne</label>
+                        </div>
+                    </div>
 
+                    <!-- Quantité -->
+                    <div class="mb-3">
+                        <label class="form-label">Quelle quantité ?</label>
+                        <input type="number" class="form-control" name="quantite" min="1" max="99" value="1" required>
+                    </div>
 
-        <div>
-            <form action="/form" method="POST" autocomplete="on">
-                Quel Type de bouton ?
-                <br/>
-                <input type="radio" name="pizzastyle" disabled = "enabled" value="H">Hawaïenne<br>
-                <input type="radio" name="pizzastyle" value="A" CHECKED >All Dressed<br>
-                <input type="radio" name="pizzastyle" value="S">Sicilienne<br><br>
-                QUELLE QUANTITÉ ?
-                <br/>
-                <input type="number" required = "required" name="quantite" min="1" max="99" value="1"><br/><br/>
-                QUELLE TAILLE ?
-                <br/>
-                <select name="taille">
-                    <option value="S">Small</option>
-                    <option value="M" selected="selected">Medium</option>
-                    <option value="L">Large</option>
-                </select><br/><br/>
-                QUELS INGREDIENTS SUPPLÉMENTAIRES ?<br/>
-                <input type="checkbox" name="pepperoni" value="pepperoniOK" />
-                pepperoni<br/>
-                <input type="checkbox" name="mozzarella" value="mozzarellaOK" />
-                mozzarella<br/> 
-                <input type="checkbox" name="oeuf" value="oeufOK" />
-                oeuf<br/><br/> 
+                    <!-- Taille -->
+                    <div class="mb-3">
+                        <label class="form-label">Quelle taille ?</label>
+                        <select name="taille" class="form-select">
+                            <option value="S">Small</option>
+                            <option value="M" selected>Medium</option>
+                            <option value="L">Large</option>
+                        </select>
+                    </div>
 
-                QUELLE EST VOTRE ADRESSE ?
-                <br>
-                <textarea name="adresse" rows="2" cols="50">
-                </textarea><br/><br/>
+                    <!-- Ingrédients -->
+                    <div class="mb-3">
+                        <label class="form-label">Ingrédients supplémentaires :</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="pepperoni" value="pepperoniOK"
+                                id="pepperoni">
+                            <label class="form-check-label" for="pepperoni">Pepperoni</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="mozzarella" value="mozzarellaOK"
+                                id="mozza">
+                            <label class="form-check-label" for="mozza">Mozzarella</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="oeuf" value="oeufOK" id="egg">
+                            <label class="form-check-label" for="egg">Oeuf</label>
+                        </div>
+                    </div>
 
-                QUELLE EST VOTRE CODE POSTAL ? exemple : H2X 1Y4
-                <br>
-                <input type="text" required = "required" name="codepostal" value="H2X 1Y4" pattern="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]"><br/><br/>
+                    <!-- Adresse -->
+                    <div class="mb-3">
+                        <label class="form-label">Adresse :</label>
+                        <textarea name="adresse" rows="2" class="form-control"></textarea>
+                    </div>
 
-                <label for="fname">QUELLE EST VOTRE NOM ?</label><br>
-                <input type="text" id="fname" required = "required" name="fname"><br>
-                <label for="lname">QUELLE EST VOTRE PRÉNOM ?</label><br>
-                <input type="text" id="lname" required = "required" name="lname"><br><br>
+                    <!-- Code postal -->
+                    <div class="mb-3">
+                        <label class="form-label">Code postal (ex: H2X 1Y4) :</label>
+                        <input type="text" name="codepostal" class="form-control"
+                            pattern="[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" required>
+                    </div>
 
-                QUELLE EST VOTRE TÉLÉPHONE? exemple : 514-123-4567
-                <br/>
-                <input type="tel" name="telephone" required = "required"  placeholder="438-234-5678" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" ><br/><br/>
+                    <!-- Nom & prénom -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fname" class="form-label">Nom :</label>
+                            <input type="text" id="fname" name="fname" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lname" class="form-label">Prénom :</label>
+                            <input type="text" id="lname" name="lname" class="form-control" required>
+                        </div>
+                    </div>
 
-                QUELLE EST VOTRE EMAIL ?
-                <br/>
-                <input type="email" required = "required" name="email" value=""><br/><br/>
+                    <!-- Téléphone -->
+                    <div class="mb-3">
+                        <label class="form-label">Téléphone (ex: 514-123-4567) :</label>
+                        <input type="tel" name="telephone" class="form-control" placeholder="438-234-5678"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                    </div>
 
-                QUELLE EST VOTRE MODE DE PAIEMENT ?
-                <br/>
-                <input type="text" name="modepaiement" required = "required" value=""><br/><br/>
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">Courriel :</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
 
-                <input type="submit" value="Confirmer ma commande" />
-            </form>
+                    <!-- Paiement -->
+                    <div class="mb-3">
+                        <label class="form-label">Mode de paiement :</label>
+                        <input type="text" name="modepaiement" class="form-control" required>
+                    </div>
+
+                    <!-- Bouton -->
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            Confirmer ma commande
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-
     </main>
 
     <footer>
-
         <%- include('../partials/footer') %>
-
     </footer>
-
 </body>
 
 </html>

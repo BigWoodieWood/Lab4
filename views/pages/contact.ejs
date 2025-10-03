@@ -7,38 +7,45 @@
   @brief Page de contact.
 -->
 <html>
-<head>
-    <%- include('../partials/head') %>
-</head>
-<body class="container">
-    <header>
-        <%- include('../partials/header') %>
-    </header>
 
-    <main>
-        <h1>Mes informations de contact</h1>
-    <table class="table table-hover table-bordered table-striped">
-      <thead class="table-dark"> 
+<head>
+  <%- include('../partials/head') %>
+</head>
+
+<body class="container">
+  <header>
+    <%- include('../partials/header') %>
+  </header>
+
+  <main>
+    <h1 class="mb-4 mt-3 text-center">Mes informations de contact</h1>
+    <table class="table table-bordered table-striped table-danger text-center align-middle">
+      <thead>
         <tr>
           <th>Nom</th>
           <th>Prénom</th>
           <th>Adresse postale</th>
           <th>Courriel</th>
           <th>Téléphone</th>
-          </tr>
-          <tr>
-          <td>Elliot </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Elliot</td>
           <td>Wood</td>
-          <td>lol you wish  </td>
+          <td>lol you wish</td>
           <td>202330982@edu.clg.qc.ca</td>
           <td>438-234-5678</td>
         </tr>
-      </table>
+      </tbody>
+    </table>
     <br>
-    <a class=
-
+    <div class="d-flex justify-content-center">
+      <a href="/" class="btn btn-danger">Retour à l’accueil</a>
+    </div>
     <footer>
-        <%- include('../partials/footer') %>
+      <%- include('../partials/footer') %>
     </footer>
 </body>
+
 </html>

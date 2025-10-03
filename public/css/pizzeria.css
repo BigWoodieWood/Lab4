@@ -1,0 +1,27 @@
+/* Navbar style pizzeria (BT5) */
+.navbar {
+    background-color: #d32f2f !important;  /* Rouge tomate */
+    border: none;
+    border-radius: 0;
+}
+
+/* Marque (brand) */
+.navbar .navbar-brand {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.navbar .navbar-brand:hover {
+    color: #fbc02d !important; /* Jaune fromage au survol */
+}
+
+/* Liens du menu */
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #fbc02d !important; /* Jaune fromage au survol et pour l'actif */
+}
